@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import Logo from "./Logo";
 
 // Homepage sections use root-relative hashes so they work from any page
@@ -40,9 +41,9 @@ export default function Navbar() {
               : "mt-0 bg-transparent"
           }`}
         >
-          <a href="/#home" aria-label="NetMirror home" onClick={() => {}}>
+          <Link href="/#home" aria-label="NetMirror home">
           <Logo />
-        </a>
+        </Link>
 
         <nav aria-label="Primary" className="hidden md:block">
           <ul className="flex items-center gap-1">
