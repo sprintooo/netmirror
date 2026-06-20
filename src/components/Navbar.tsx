@@ -4,11 +4,14 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Logo from "./Logo";
 
+// Homepage sections use root-relative hashes so they work from any page
+// (including /blogs/*), navigating home and scrolling to the section.
 const NAV_LINKS = [
-  { label: "Home", href: "#home" },
-  { label: "Devices", href: "#devices" },
-  { label: "Features", href: "#features" },
-  { label: "Install", href: "#install" },
+  { label: "Home", href: "/#home" },
+  { label: "Devices", href: "/#devices" },
+  { label: "Features", href: "/#features" },
+  { label: "Install", href: "/#install" },
+  { label: "Blogs", href: "/blogs" },
 ];
 
 export default function Navbar() {
@@ -37,7 +40,7 @@ export default function Navbar() {
               : "mt-0 bg-transparent"
           }`}
         >
-          <a href="#home" aria-label="NetMirror home" onClick={() => {}}>
+          <a href="/#home" aria-label="NetMirror home" onClick={() => {}}>
           <Logo />
         </a>
 

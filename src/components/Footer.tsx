@@ -1,21 +1,39 @@
 "use client";
 
+import Link from "next/link";
 import Logo from "./Logo";
 import { FOOTER_LINKS } from "@/lib/content";
 import { AndroidGlyph, AppleGlyph, ComputerGlyph, TvGlyph } from "./Icons";
 
-const COLUMNS = [
+const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "Platforms",
-    links: ["Netflix", "Amazon Prime Video", "Disney+", "Hotstar", "50+ More"],
+    links: [
+      { label: "Netflix", href: "#" },
+      { label: "Amazon Prime Video", href: "#" },
+      { label: "Disney+", href: "#" },
+      { label: "Hotstar", href: "#" },
+      { label: "50+ More", href: "#" },
+    ],
   },
   {
     title: "Apps",
-    links: ["Android App", "iOS (DODO)", "Computer", "Android TV"],
+    links: [
+      { label: "Android App", href: "#" },
+      { label: "iOS (DODO)", href: "#" },
+      { label: "Computer", href: "#" },
+      { label: "Android TV", href: "#" },
+    ],
   },
   {
     title: "Company",
-    links: ["About", "Privacy Policy", "Contact", "FAQ"],
+    links: [
+      { label: "Blog", href: "/blogs" },
+      { label: "About", href: "#" },
+      { label: "Privacy Policy", href: "#" },
+      { label: "Contact", href: "#" },
+      { label: "FAQ", href: "#" },
+    ],
   },
 ];
 
@@ -51,14 +69,13 @@ export default function Footer() {
               <h3 className="text-sm font-semibold text-white">{col.title}</h3>
               <ul className="mt-4 space-y-2.5">
                 {col.links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href="#"
-                      onClick={() => {}}
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
                       className="text-sm text-white/55 transition-colors hover:text-white"
                     >
-                      {link}
-                    </a>
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
