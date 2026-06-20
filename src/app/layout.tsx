@@ -16,6 +16,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://netmirror.buzz"),
   title: "NetMirror APP - Watch Movies and Series",
   description:
     "Watch Movies and Tv Series from Netflix, Amazon Prime Video, Disney+, Hotstar and 50+ More OTT Platforms with No Ads, 1-click play, available on Android, iPhone (iOS), and computer.",
@@ -30,6 +31,27 @@ export const metadata: Metadata = {
     "iphone",
     "computer",
   ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://netmirror.buzz/",
+    siteName: "NetMirror",
+    title: "NetMirror APP - Watch Movies and Series",
+    description:
+      "Watch Movies and TV Series from Netflix, Amazon Prime Video, Disney+, Hotstar and 50+ more OTT platforms — No Ads, 1-click play, on Android, iPhone and computer.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NetMirror APP - Watch Movies and Series",
+    description:
+      "Watch Movies and TV Series from 50+ OTT platforms — No Ads, 1-click play, on Android, iPhone and computer.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export const viewport: Viewport = {
