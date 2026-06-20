@@ -15,7 +15,7 @@ export default function Hero() {
     >
       {/* background glows */}
       <div className="pointer-events-none absolute inset-0 bg-radial-glow" />
-      <div className="pointer-events-none absolute -top-24 left-1/2 h-[420px] w-[680px] -translate-x-1/2 rounded-full bg-brand-500/20 blur-[120px]" />
+      <div className="pointer-events-none absolute -top-24 left-1/2 h-[420px] w-full max-w-[680px] -translate-x-1/2 rounded-full bg-brand-500/20 blur-[120px]" />
       <div className="pointer-events-none absolute inset-0 bg-grid-faint [background-size:54px_54px] [mask-image:radial-gradient(60%_50%_at_50%_30%,black,transparent)]" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-8">

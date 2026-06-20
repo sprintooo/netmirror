@@ -14,12 +14,21 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Global safeguard: never let the page exceed the viewport width or scroll
+   horizontally. Applied to BOTH html and body — body-only clipping fails when
+   <html> remains the scroll container. */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--bg);
   color: #f5f5f7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
 }
 
 /* Custom scrollbar */

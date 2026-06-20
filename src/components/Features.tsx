@@ -23,8 +23,8 @@ const ICONS: Record<Feature["icon"], React.FC<React.SVGProps<SVGSVGElement>>> = 
 
 export default function Features() {
   return (
-    <section id="features" className="relative py-20 sm:py-28">
-      <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-[560px] -translate-x-1/2 rounded-full bg-brand-700/10 blur-[120px]" />
+    <section id="features" className="relative overflow-hidden py-20 sm:py-28">
+      <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-full max-w-[560px] -translate-x-1/2 rounded-full bg-brand-700/10 blur-[120px]" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
