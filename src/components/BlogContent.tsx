@@ -1,4 +1,27 @@
-import type { ContentBlock } from "@/content/blog/types";
+import Link from "next/link";
+import type { ContentBlock, TextSpan } from "@/content/blog/types";
+
+/** Render a single text span — a plain string or an inline link. */
+function renderSpan(span: TextSpan, key: number) {
+  if (typeof span === "string") return <span key={key}>{span}</span>;
+  const isInternal = span.href.startsWith("/") || span.href.startsWith("#");
+  const className =
+    "font-medium text-brand-400 underline decoration-brand-500/40 underline-offset-2 transition-colors hover:text-brand-300";
+  return isInternal ? (
+    <Link key={key} href={span.href} className={className}>
+      {span.text}
+    </Link>
+  ) : (
+    <a
+      key={key}
+      href={span.href}
+      className={className}
+      rel="noopener noreferrer"
+    >
+      {span.text}
+    </a>
+  );
+}
 
 /**
  * Renders an article body (an ordered list of typed blocks) into clean,
@@ -73,6 +96,48 @@ export default function BlogContent({ blocks }: { blocks: ContentBlock[] }) {
               >
                 {block.text}
               </blockquote>
+            );
+          case "rich":
+            return (
+              <p key={i} className="text-base leading-relaxed text-white/75">
+                {block.spans.map((span, j) => renderSpan(span, j))}
+              </p>
+            );
+          case "links":
+            return (
+              <ul
+                key={i}
+                className="ml-1 space-y-2 text-base leading-relaxed text-white/75"
+              >
+                {block.items.map((item, j) => {
+                  const isInternal =
+                    item.href.startsWith("/") || item.href.startsWith("#");
+                  const label = (
+                    <span className="font-semibold text-brand-400 transition-colors group-hover:text-brand-300">
+                      {item.label}
+                    </span>
+                  );
+                  return (
+                    <li key={j} className="flex gap-3">
+                      <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-brand-500" />
+                      <span>
+                        {isInternal ? (
+                          <Link href={item.href} className="group">
+                            {label}
+                          </Link>
+                        ) : (
+                          <a href={item.href} className="group" rel="noopener noreferrer">
+                            {label}
+                          </a>
+                        )}
+                        {item.description ? (
+                          <span className="text-white/65"> — {item.description}</span>
+                        ) : null}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
             );
           default:
             return null;

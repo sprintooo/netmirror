@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { label: "Devices", href: "/#devices" },
   { label: "Features", href: "/#features" },
   { label: "Install", href: "/#install" },
+  { label: "Movies", href: "/movies" },
   { label: "Blogs", href: "/blogs" },
 ];
 

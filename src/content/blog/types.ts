@@ -7,13 +7,35 @@
  * paragraphs — and can render clean, crawlable HTML without extra deps.
  */
 
+/**
+ * A span of body text. Either a plain string, or a piece of text that links
+ * somewhere. Used by the `rich` paragraph block so we can place inline links
+ * inside otherwise-plain prose (movie→movie, movie→blog, movie→homepage)
+ * without losing the simplicity of the plain `p` block.
+ */
+export type TextSpan = string | { text: string; href: string };
+
+/** A single internal link, used by the `links` block (e.g. "Similar Movies"). */
+export interface LinkItem {
+  label: string;
+  href: string;
+  /** Optional one-line description shown beside the link. */
+  description?: string;
+}
+
 export type ContentBlock =
   | { type: "p"; text: string }
   | { type: "h2"; text: string }
   | { type: "h3"; text: string }
   | { type: "ul"; items: string[] }
   | { type: "ol"; items: string[] }
-  | { type: "quote"; text: string };
+  | { type: "quote"; text: string }
+  // Backward-compatible inline-link support: a paragraph made of spans, where
+  // any span can carry an `href`. Existing `p` blocks are unaffected.
+  | { type: "rich"; spans: TextSpan[] }
+  // A styled list of internal links — ideal for "Similar Movies" / related
+  // reading sections that strengthen internal linking and topical clustering.
+  | { type: "links"; items: LinkItem[] };
 
 export interface FAQ {
   question: string;

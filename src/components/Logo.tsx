@@ -1,6 +1,6 @@
 /**
- * Original "NetMirror" wordmark + glyph. The glyph is an original
- * mirrored play-arrow mark drawn for this clone (not a copied logo).
+ * "NetMirror" wordmark + glyph. The glyph is a stylized red "N" ribbon
+ * mark drawn as a crisp vector so it stays sharp at any resolution.
  */
 interface LogoProps {
   className?: string;
@@ -19,13 +19,32 @@ export default function Logo({ className = "", withText = true }: LogoProps) {
       >
         <defs>
           <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#ff4d57" />
-            <stop offset="100%" stopColor="#c1070f" />
+            <stop offset="0%" stopColor="#ff3b46" />
+            <stop offset="55%" stopColor="#e50914" />
+            <stop offset="100%" stopColor="#a30009" />
+          </linearGradient>
+          <linearGradient id="logoShine" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.45" />
+            <stop offset="40%" stopColor="#ffffff" stopOpacity="0" />
           </linearGradient>
         </defs>
-        <rect x="2" y="2" width="28" height="28" rx="8" fill="#0b0b0f" stroke="rgba(255,255,255,0.08)" />
-        <path d="M11 9 L17 16 L11 23 Z" fill="url(#logoGrad)" />
-        <path d="M21 9 L15 16 L21 23 Z" fill="url(#logoGrad)" opacity="0.45" />
+        {/* Flowing "N" ribbon: curved left post, sweeping diagonal, rising right post */}
+        <path
+          d="M8 24 C6.8 16.5 7.2 9.5 10 9 C12.8 8.5 13.8 14.5 15.5 18.5 C17.5 23.2 19.6 24.8 22 22.5 C24.4 20.2 25 12.5 24 8"
+          fill="none"
+          stroke="url(#logoGrad)"
+          strokeWidth="5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M8 24 C6.8 16.5 7.2 9.5 10 9 C12.8 8.5 13.8 14.5 15.5 18.5 C17.5 23.2 19.6 24.8 22 22.5 C24.4 20.2 25 12.5 24 8"
+          fill="none"
+          stroke="url(#logoShine)"
+          strokeWidth="5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
       {withText && (
         <span className="logo-wordmark text-xl sm:text-2xl">

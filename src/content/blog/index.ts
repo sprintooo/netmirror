@@ -30,6 +30,16 @@ import aiUpscalingStreaming from "./posts/ai-upscaling-streaming";
 import organizeYourWatchlist from "./posts/organize-your-watchlist";
 import screenTimeBalance from "./posts/screen-time-balance";
 import saveMoneyOnStreaming from "./posts/save-money-on-streaming";
+import netmirrorApkDownloadGuide from "./posts/netmirror-apk-download-guide";
+import netmirrorV6WhatsNew from "./posts/netmirror-v6-whats-new";
+import netmirrorOnPcWindows from "./posts/netmirror-on-pc-windows";
+import netmirrorOnFirestick from "./posts/netmirror-on-firestick";
+import netmirrorApkNotInstallingFix from "./posts/netmirror-apk-not-installing-fix";
+import howToUpdateNetmirrorApk from "./posts/how-to-update-netmirror-apk";
+import netmirrorApkSystemRequirements from "./posts/netmirror-apk-system-requirements";
+import downloadMoviesWatchOffline from "./posts/download-movies-watch-offline";
+import watchLiveTvSportsNetmirror from "./posts/watch-live-tv-sports-netmirror";
+import watchMoviesOnNetmirrorBeginners from "./posts/watch-movies-on-netmirror-beginners";
 
 /** Every post. Order here does not matter — listings sort by date. */
 const posts: BlogPost[] = [
@@ -53,6 +63,16 @@ const posts: BlogPost[] = [
   organizeYourWatchlist,
   screenTimeBalance,
   saveMoneyOnStreaming,
+  netmirrorApkDownloadGuide,
+  netmirrorV6WhatsNew,
+  netmirrorOnPcWindows,
+  netmirrorOnFirestick,
+  netmirrorApkNotInstallingFix,
+  howToUpdateNetmirrorApk,
+  netmirrorApkSystemRequirements,
+  downloadMoviesWatchOffline,
+  watchLiveTvSportsNetmirror,
+  watchMoviesOnNetmirrorBeginners,
 ];
 
 /** All posts, newest first. */
