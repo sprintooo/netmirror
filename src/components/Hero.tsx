@@ -110,7 +110,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.92, y: 24 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto flex max-w-sm justify-center"
+          className="relative mx-auto flex w-full max-w-sm justify-center lg:mx-0 lg:ml-auto"
         >
           <div className="pointer-events-none absolute inset-0 -z-10 rounded-full bg-brand-500/25 blur-[90px]" />
           <PhoneMockup className="w-56 animate-float drop-shadow-[0_30px_60px_rgba(0,0,0,0.7)] sm:w-64" />
@@ -118,7 +118,7 @@ export default function Hero() {
       </div>
 
       {/* stats */}
-      <div className="relative mx-auto mt-16 max-w-5xl px-4 sm:mt-20 sm:px-6">
+      <div className="relative mx-auto mt-16 max-w-7xl px-4 sm:mt-20 sm:px-6">
         <div className="grid grid-cols-2 gap-3 rounded-2xl glass p-4 shadow-card sm:grid-cols-4 sm:gap-4 sm:p-6">
           {STATS.map((s) => (
             <div key={s.label} className="text-center">
