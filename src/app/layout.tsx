@@ -68,8 +68,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+      <head>
+        <GoogleAdSense />
+      </head>
       <body className="font-sans antialiased">{children}</body>
-      <GoogleAdSense />
     </html>
   );
 }

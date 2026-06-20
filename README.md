@@ -8,10 +8,12 @@ logic** — every button uses a placeholder `onClick={() => {}}` handler.
 
 ## Tech stack
 
-- **Next.js 14** (App Router)
+- **Next.js 15** (App Router)
 - **TypeScript**
 - **Tailwind CSS 3**
 - **Framer Motion** (entrance + scroll + tab animations)
+- **Cloudflare** deployment via [`@opennextjs/cloudflare`](https://opennext.js.org/cloudflare)
+- **Google AdSense** Auto Ads
 
 ## Getting started
 
@@ -28,14 +30,39 @@ npm run start   # serve the production build
 npm run lint    # lint
 ```
 
+## Environment variables
+
+Copy `.env.example` to `.env.local` and fill in the values:
+
+```bash
+cp .env.example .env.local
+```
+
+| Variable | Description |
+| --- | --- |
+| `NEXT_PUBLIC_ADSENSE_CLIENT` | Google AdSense publisher ID (e.g. `ca-pub-…`). Used by the global Auto Ads script. |
+
+> **Note:** `NEXT_PUBLIC_*` variables are inlined into the client bundle **at build time**. When deploying via the Cloudflare dashboard or CI, set this variable in the **build-time** environment (not only as a Worker runtime variable), since `.env.local` is gitignored and won't exist there.
+
+## Deployment (Cloudflare)
+
+```bash
+npm run preview   # build with OpenNext and preview locally
+npm run deploy    # build with OpenNext and deploy to Cloudflare
+npm run cf-typegen # regenerate Cloudflare binding types
+```
+
 ## Project structure
 
 ```
 src/
   app/
-    layout.tsx        # fonts, metadata, theme color
+    layout.tsx        # fonts, metadata, theme color, global AdSense script
     page.tsx          # assembles the homepage sections
     globals.css       # Tailwind + glass/gradient utilities
+    robots.ts         # robots.txt route
+    sitemap.ts        # sitemap.xml route
+    blogs/            # SEO blog index + dynamic [slug] post pages
   components/
     Navbar.tsx        # sticky glass nav + mobile menu
     Hero.tsx          # headline, CTAs, phone mockup, stats
@@ -43,13 +70,20 @@ src/
     DeviceShowcase.tsx# tabbed Android / iOS / Computer / TV install steps
     CTA.tsx           # closing call-to-action band
     Footer.tsx        # link columns + copyright
+    BlogContent.tsx   # blog post renderer
     DeviceMockups.tsx # original SVG phone/desktop/TV placeholders
     Icons.tsx         # original inline SVG icons
     Logo.tsx          # original NetMirror wordmark + glyph
     Reveal.tsx        # scroll-reveal wrapper (Framer Motion)
+    GoogleAdSense.tsx # global AdSense Auto Ads loader (next/script)
+  content/
+    blog/             # blog post data + types
   lib/
     content.ts        # all static UI copy / data
+    site.ts           # site-level constants (URL, metadata)
 tailwind.config.ts    # palette, gradients, shadows, keyframes
+next.config.mjs       # Next.js + OpenNext Cloudflare dev bindings
+wrangler.jsonc        # Cloudflare Worker / assets config
 ```
 
 ## Notes on assets
