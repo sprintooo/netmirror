@@ -18,6 +18,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://netmirror.buzz"),
+  referrer: "no-referrer-when-downgrade",
   title: "NetMirror APP - Watch Movies and Series",
   description:
     "Watch Movies and Tv Series from Netflix, Amazon Prime Video, Disney+, Hotstar and 50+ More OTT Platforms with No Ads, 1-click play, available on Android, iPhone (iOS), and computer.",
@@ -55,7 +56,8 @@ export const metadata: Metadata = {
   },
   verification: {
     other: {
-      "ezoic-site-verification": "XAzscyZzAawt4TkApPJQFT6WAKXDX5",
+      "0c93ed2ecdd6a484c6db83154bd7eb3a041d5f2b":
+        "0c93ed2ecdd6a484c6db83154bd7eb3a041d5f2b",
     },
   },
 };
