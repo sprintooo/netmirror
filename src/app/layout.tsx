@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import GoogleAdSense from "@/components/GoogleAdSense";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -75,9 +74,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <head>
-        <GoogleAdSense />
-      </head>
       <body className="font-sans antialiased">
         {children}
         {/* HillTopAds pop tag (extracted from hta-code-7170309 to a static
