@@ -78,7 +78,12 @@ export default function RootLayout({
       <head>
         <GoogleAdSense />
       </head>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        {children}
+        {/* HillTopAds pop tag (extracted from hta-code-7170309 to a static
+            file so it doesn't bloat the HTML/React bundle). Self-executing. */}
+        <script async src="/hta-7170309.js" />
+      </body>
     </html>
   );
 }
