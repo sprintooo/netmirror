@@ -24,6 +24,16 @@ export function PlayIcon(props: IconProps) {
   );
 }
 
+export function HomeIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M4 11.5 12 5l8 6.5" />
+      <path d="M6 10v9h12v-9" />
+      <path d="M10 19v-5h4v5" />
+    </svg>
+  );
+}
+
 export function HdIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>

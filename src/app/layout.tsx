@@ -53,6 +53,11 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: {
+    other: {
+      "ezoic-site-verification": "XAzscyZzAawt4TkApPJQFT6WAKXDX5",
+    },
+  },
 };
 
 export const viewport: Viewport = {
