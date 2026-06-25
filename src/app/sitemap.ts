@@ -9,10 +9,30 @@ import { SITE_URL } from "@/lib/site";
  * Includes the homepage, the blog listing and every blog post, plus the
  * movies listing and every movie page, so all pages are discoverable and
  * crawlable by search engines.
+ *
+ * `lastModified` always reflects real content dates — never the build time —
+ * so the values stay stable across deploys and only change when content does.
+ * Google downranks/ignores <lastmod> when it sees it churn on every crawl, so
+ * keeping it honest preserves its crawl-scheduling value.
  */
+
+/** Newest date in a list of ISO date strings, as a Date. Falls back to epoch. */
+function newestDate(dates: string[]): Date {
+  const newest = dates.reduce((max, d) => (d > max ? d : max), "");
+  return newest ? new Date(newest) : new Date(0);
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();
   const movies = getAllMovies();
+
+  // Effective "last touched" date for each item (an explicit update wins).
+  const postDates = posts.map((p) => p.updated ?? p.date);
+  const movieDates = movies.map((m) => m.updated ?? m.datePublished);
+
+  const blogsLastModified = newestDate(postDates);
+  const moviesLastModified = newestDate(movieDates);
+  const homeLastModified = newestDate([...postDates, ...movieDates]);
 
   const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${SITE_URL}/blogs/${post.slug}`,
@@ -31,19 +51,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: `${SITE_URL}/`,
-      lastModified: new Date(),
+      lastModified: homeLastModified,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${SITE_URL}/movies`,
-      lastModified: new Date(),
+      lastModified: moviesLastModified,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${SITE_URL}/blogs`,
-      lastModified: new Date(),
+      lastModified: blogsLastModified,
       changeFrequency: "weekly",
       priority: 0.9,
     },
