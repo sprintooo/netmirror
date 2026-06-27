@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import Script from "next/script";
+import ServiceWorker from "@/components/ServiceWorker";
 import "./globals.css";
 
 const inter = Inter({
@@ -86,6 +87,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased">
         {children}
+        <ServiceWorker />
       </body>
     </html>
   );
