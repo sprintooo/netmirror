@@ -98,6 +98,10 @@ export default function RootLayout({
           async
           strategy="beforeInteractive"
         />
+        {/* Monetag tag (al5sm.com zone 11208645) */}
+        <Script id="monetag-al5sm" strategy="afterInteractive">
+          {`(function(s){s.dataset.zone='11208645',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`}
+        </Script>
       </head>
       <body className="font-sans antialiased">
         {children}
