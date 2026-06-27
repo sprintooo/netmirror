@@ -77,6 +77,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <head>
+        {/* Google tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-RDHYLM3K64"
+          strategy="afterInteractive"
+          async
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-RDHYLM3K64');
+          `}
+        </Script>
         {/* Google AdSense Auto Ads loader */}
         <Script
           async
