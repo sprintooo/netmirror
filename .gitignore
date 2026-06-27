@@ -34,3 +34,8 @@ next-env.d.ts
 .open-next/
 .wrangler/
 cloudflare-env.d.ts
+
+# Google Indexing API service-account keys (never commit secrets)
+service-account*.json
+*.iam.gserviceaccount.com.json
+google-credentials*.json
