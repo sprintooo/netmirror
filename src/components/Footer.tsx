@@ -19,21 +19,20 @@ const COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "Apps",
     links: [
-      { label: "Android App", href: "#" },
-      { label: "iOS (DODO)", href: "#" },
-      { label: "Computer", href: "#" },
-      { label: "Android TV", href: "#" },
+      { label: "Android App", href: "/blogs/install-netmirror-on-android" },
+      { label: "iPhone (iOS)", href: "/blogs/install-netmirror-on-iphone" },
+      { label: "PC & Windows", href: "/netmirror-for-windows" },
+      { label: "Android TV", href: "/netmirror-android-tv" },
     ],
   },
   {
-    title: "Company",
+    title: "Guides",
     links: [
+      { label: "NetMirror Login Online", href: "/netmirror-login-online" },
+      { label: "NetMirror APK for PC", href: "/netmirror-apk-for-pc" },
+      { label: "NetMirror FAQ", href: "/netmirror-faq" },
       { label: "Movies", href: "/movies" },
       { label: "Blog", href: "/blogs" },
-      { label: "About", href: "#" },
-      { label: "Privacy Policy", href: "#" },
-      { label: "Contact", href: "#" },
-      { label: "FAQ", href: "#" },
     ],
   },
 ];
@@ -85,7 +84,9 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 sm:flex-row">
-          <p className="text-xs text-white/45">All Rights Reserved © 2021</p>
+          <p className="text-xs text-white/45">
+            All Rights Reserved © {new Date().getFullYear()}
+          </p>
           <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
             {FOOTER_LINKS.map((link) => (
               <li key={link.label}>

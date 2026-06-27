@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import Script from "next/script";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -43,12 +44,22 @@ export const metadata: Metadata = {
     title: "NetMirror APP - Watch Movies and Series",
     description:
       "Watch Movies and TV Series from Netflix, Amazon Prime Video, Disney+, Hotstar and 50+ more OTT platforms — No Ads, 1-click play, on Android, iPhone and computer.",
+    locale: "en_US",
+    // Default social/share image. Individual pages (movies, blog posts) may
+    // override this with their own `images`.
+    images: [
+      {
+        url: "/hero-bg.jpg",
+        alt: "NetMirror — watch 50+ OTT platforms in one ad-free app",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "NetMirror APP - Watch Movies and Series",
     description:
       "Watch Movies and TV Series from 50+ OTT platforms — No Ads, 1-click play, on Android, iPhone and computer.",
+    images: ["/hero-bg.jpg"],
   },
   robots: {
     index: true,
@@ -68,6 +79,26 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+// Site-wide structured data. WebSite enables Google to understand the site as
+// an entity (and is the home for a future sitelinks search box); Organization
+// establishes the publisher used across all Article/Movie structured data.
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_URL,
+  inLanguage: "en",
+  publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+};
+
+const organizationLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: `${SITE_URL}/icon.svg`,
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -76,6 +107,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <head>
+        {/* Preload the hero background — it is the LCP element on the homepage,
+            so fetching it early measurably improves Largest Contentful Paint. */}
+        <link rel="preload" as="image" href="/hero-bg.jpg" />
+
+        {/* Site-wide structured data (WebSite + Organization) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }}
+        />
+
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-RDHYLM3K64"

@@ -10,12 +10,21 @@ export default function Hero() {
       id="home"
       className="relative flex min-h-[88vh] items-center justify-center overflow-hidden"
     >
-      {/* Background collage image at public/hero-bg.jpg (compressed). */}
+      {/* Background collage image at public/hero-bg.jpg (compressed).
+          Decorative, so alt="" keeps it out of the accessibility tree.
+          It is the LCP element, so we load it eagerly at high priority and
+          pair it with a <link rel="preload"> in the root layout. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/hero-bg.jpg"
         alt=""
+        aria-hidden="true"
+        loading="eager"
+        decoding="async"
         className="absolute inset-0 h-full w-full object-cover object-center"
+        // fetchpriority is a valid HTML attribute React 18 passes through to the
+        // DOM; spread avoids the camelCase typing gap and boosts LCP priority.
+        {...({ fetchpriority: "high" } as Record<string, string>)}
       />
 
       {/* Dark overlay so the text stays readable over the artwork.

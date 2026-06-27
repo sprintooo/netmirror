@@ -40,6 +40,10 @@ import netmirrorApkSystemRequirements from "./posts/netmirror-apk-system-require
 import downloadMoviesWatchOffline from "./posts/download-movies-watch-offline";
 import watchLiveTvSportsNetmirror from "./posts/watch-live-tv-sports-netmirror";
 import watchMoviesOnNetmirrorBeginners from "./posts/watch-movies-on-netmirror-beginners";
+import netmirrorIAmNotARobot from "./posts/netmirror-i-am-not-a-robot";
+import netmirrorProHttps from "./posts/netmirror-pro-https";
+import net22NetflixLogin from "./posts/net22-netflix-login";
+import appsLikeNetmirror from "./posts/apps-like-netmirror";
 
 /** Every post. Order here does not matter — listings sort by date. */
 const posts: BlogPost[] = [
@@ -73,6 +77,10 @@ const posts: BlogPost[] = [
   downloadMoviesWatchOffline,
   watchLiveTvSportsNetmirror,
   watchMoviesOnNetmirrorBeginners,
+  netmirrorIAmNotARobot,
+  netmirrorProHttps,
+  net22NetflixLogin,
+  appsLikeNetmirror,
 ];
 
 /** All posts, newest first. */

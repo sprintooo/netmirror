@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/content/blog";
 import { getAllMovies } from "@/content/movies";
+import { getAllLandingPages } from "@/content/landing";
 import { SITE_URL } from "@/lib/site";
 
 /**
@@ -25,6 +26,7 @@ function newestDate(dates: string[]): Date {
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();
   const movies = getAllMovies();
+  const landingPages = getAllLandingPages();
 
   // Effective "last touched" date for each item (an explicit update wins).
   const postDates = posts.map((p) => p.updated ?? p.date);
@@ -33,6 +35,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogsLastModified = newestDate(postDates);
   const moviesLastModified = newestDate(movieDates);
   const homeLastModified = newestDate([...postDates, ...movieDates]);
+
+  // Dedicated SEO landing pages live at the site root (e.g. /netmirror-faq).
+  // High priority — these target high-intent queries and link to the app.
+  const landingEntries: MetadataRoute.Sitemap = landingPages.map((p) => ({
+    url: `${SITE_URL}/${p.slug}`,
+    lastModified: new Date(p.updated ?? p.datePublished),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
 
   const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${SITE_URL}/blogs/${post.slug}`,
@@ -67,6 +78,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    ...landingEntries,
     ...movieEntries,
     ...postEntries,
   ];
