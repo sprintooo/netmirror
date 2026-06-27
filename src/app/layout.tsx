@@ -84,6 +84,14 @@ export default function RootLayout({
           crossOrigin="anonymous"
           strategy="beforeInteractive"
         />
+        {/* Monetag Multitag (quge5.com zone 253994) */}
+        <Script
+          src="https://quge5.com/88/tag.min.js"
+          data-zone="253994"
+          data-cfasync="false"
+          async
+          strategy="beforeInteractive"
+        />
       </head>
       <body className="font-sans antialiased">
         {children}
