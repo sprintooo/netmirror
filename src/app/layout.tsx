@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import Script from "next/script";
-import ServiceWorker from "@/components/ServiceWorker";
 import "./globals.css";
 
 const inter = Inter({
@@ -91,14 +90,7 @@ export default function RootLayout({
             gtag('config', 'G-RDHYLM3K64');
           `}
         </Script>
-        {/* Google AdSense Auto Ads loader */}
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9451303528131556"
-          crossOrigin="anonymous"
-          strategy="beforeInteractive"
-        />
-        {/* Monetag Multitag (quge5.com zone 253994) */}
+        {/* Monetag OnClick / Popunder (quge5.com zone 253994) */}
         <Script
           src="https://quge5.com/88/tag.min.js"
           data-zone="253994"
@@ -109,7 +101,6 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased">
         {children}
-        <ServiceWorker />
       </body>
     </html>
   );
