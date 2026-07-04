@@ -1,3 +1,5 @@
+export const dynamic = "force-static";
+
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/content/blog";
 import { getAllMovies } from "@/content/movies";
